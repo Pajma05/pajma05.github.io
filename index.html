@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Marie Cazé, portfolio</title>
+<meta name="description" content="Portfolio de Marie Cazé : projets informatiques (3D, web, back-end, systèmes, jeux vidéo).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#FBF7F1; --band:#E1EDE9; --card:#FFFFFF;
+    --ink:#22302C; --text:#45534F; --muted:#7C8A86;
+    --accent:#2E6C62; --accent-d:#245349; --accent-soft:#D7E7E2;
+    --gold:#A9772B; --gold-soft:#F3E7CF;
+    --border:#E8E1D4; --line:#EDF2F0;
+    --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--accent-d)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* Bannière */
+  .band{background:var(--band);border-bottom:1px solid var(--border)}
+  .band .wrap{padding:56px 24px 48px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--card);
+    box-shadow:0 6px 20px rgba(34,48,44,.15);margin-bottom:18px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent-d);margin:0 0 12px}
+  .band h1{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:2.9rem;margin:0 0 10px;
+    line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+  .band .lead{color:var(--text);font-size:1.05rem;margin:0;max-width:600px}
+  .contact{margin-top:20px;display:flex;gap:10px 20px;justify-content:center;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.8rem}
+  .contact a{color:var(--accent-d);text-decoration:none}
+  .contact a:hover{text-decoration:underline}
+
+  /* Sections */
+  section{padding:48px 0}
+  h2{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1.7rem;text-align:center;margin:0}
+  .section-intro{text-align:center;color:var(--muted);margin:6px 0 0;font-size:.95rem}
+
+  /* Filtres */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 4px}
+  .filter{font-family:var(--mono);font-size:.76rem;color:var(--accent-d);background:var(--card);
+    border:1px solid var(--border);border-radius:999px;padding:6px 14px;cursor:pointer;transition:all .15s}
+  .filter:hover{border-color:var(--accent)}
+  .filter[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* Grille */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:26px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(46,108,98,.12)}
+  .card .thumb{width:100%;height:auto;display:block;background:var(--line);
+    border-bottom:1px solid var(--border)}
+  .card .pad{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .card .year{font-family:var(--mono);color:var(--accent);font-size:.74rem;font-weight:500}
+  .card h3{font-family:var(--serif);font-size:1.24rem;color:var(--ink);margin:4px 0 0;line-height:1.2}
+  .award{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:10px;
+    font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--gold);background:var(--gold-soft);
+    border-radius:999px;padding:3px 10px}
+  .card p.desc{color:var(--text);font-size:.92rem;margin:12px 0 0;flex:1}
+  .tech{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--mono);font-size:.68rem;color:var(--accent-d);background:var(--accent-soft);
+    border-radius:5px;padding:2px 8px}
+  .cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+  .lnk{font-family:var(--mono);display:inline-block;padding:8px 16px;border-radius:8px;font-size:.78rem;
+    font-weight:500;text-decoration:none}
+  .lnk.primary{background:var(--accent);color:#fff}
+  .lnk.primary:hover{background:var(--accent-d)}
+  .lnk.ghost{background:transparent;color:var(--accent-d);border:1.5px solid var(--accent)}
+  .lnk.ghost:hover{background:var(--band)}
+
+  /* À propos */
+  .about{background:var(--band);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .about p{max-width:680px;margin:20px auto 0;text-align:center;color:var(--text);font-size:1.02rem}
+
+  footer{padding:30px 0 48px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:.8rem}
+  footer a{color:var(--accent-d);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  @media(max-width:560px){ .band h1{font-size:2.2rem} }
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <img class="avatar" src="photo.png" alt="Marie Cazé">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Marie Cazé</h1>
+    <p class="lead">Élève-ingénieure en informatique à l'EPITA. Projets en 3D, développement web, back-end, systèmes et jeux vidéo.</p>
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/marie-caz%C3%A9-08996422b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:marie.caze@epita.fr">marie.caze@epita.fr</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="projets">
+    <h2>Projets</h2>
+    <p class="section-intro"><span id="count"></span> projets, du plus récent au plus ancien.</p>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<section class="about" id="apropos">
+  <div class="wrap">
+    <h2>À propos</h2>
+    <p>Élève-ingénieure en dernière année à l'EPITA (majeure MTI, promotion 2027). Après un stage en
+       développement full-stack dans le numérique en santé, je m'oriente vers le développement logiciel,
+       avec un goût marqué pour la 3D et les projets techniques. Fondatrice du club gaming de mon école.
+       Anglais TOEIC 925. Basée à Paris.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Marie Cazé, <span id="year"></span> ·
+    <a href="https://www.linkedin.com/in/marie-caz%C3%A9-08996422b/" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="mailto:marie.caze@epita.fr">marie.caze@epita.fr</a>
+  </div>
+</footer>
+
+<script>
+/* =======================================================================
+   PROJETS. Champs : title, year, cats:[...], award (facultatif),
+     desc (structure CAR : contexte, actions, résultat), tech:[...],
+     links:[{label, url, type}] avec type = "demo" | "download" | "code".
+   Fichiers à télécharger : dossier files/.
+   ======================================================================= */
+const PROJECTS = [
+  { title:"GOAT", year:"Depuis septembre 2026", cats:["3D","Web"],
+    desc:"Projet de fin d'études mené avec NEEV. Conception d'une cartographie 3D interactive de station et d'un marché virtuel de pistes, avec suivi de performance et jeu de cartes à collectionner. A produit un socle technique repris par les groupes suivants.",
+    tech:["React","TypeScript","three.js","react-three-fiber"], links:[] },
+
+  { title:"Komantri", year:"Juillet 2026", cats:["Web","IA"], image:"images/projects/komantri.png",
+    award:"1re place, hackathon Takima x EPITA",
+    desc:"Application de tri des déchets développée en hackathon. Mise au point d'une reconnaissance d'image par apprentissage automatique qui, à partir d'une photo et d'une ville, renvoie le bon bac et le point de dépôt le plus proche, sans création de compte. A remporté la 1re place du hackathon.",
+    tech:["Web","Back-end","Apprentissage automatique"],
+    links:[{label:"Voir le projet", url:"https://komantri.bantou.me", type:"demo"}] },
+
+  { title:"TakiPipou", year:"Avril 2026", cats:["Web"], image:"images/projects/takipipou.png",
+    desc:"Application front réalisée sur une journée dans le cadre du cours d'Angular. Développement d'une petite application Angular de bout en bout. Résultat : une prise en main concrète du framework et une application fonctionnelle.",
+    tech:["Angular","TypeScript"],
+    links:[{label:"Voir le projet", url:"https://takipipou.bantou.me", type:"demo"}] },
+
+  { title:"Jean-Claude", year:"Mars 2026", cats:["Web","Back-end"], image:"images/projects/jean-claude.png",
+    desc:"Quiz interactif en temps réel façon Kahoot, réalisé pour le cours de Node.js. Développement d'un serveur pilotant les parties avec des interfaces administrateur et joueur en direct. Résultat : un quiz multijoueur synchronisé en temps réel.",
+    tech:["Node.js","Temps réel"],
+    links:[{label:"Voir le projet", url:"https://quiz.bantou.me", type:"demo"}] },
+
+  { title:"Sidequest", year:"Depuis février 2026", cats:["Web","Back-end"], image:"images/projects/sidequest.png",
+    desc:"Application multiplateforme (mobile et web) pour organiser des sorties entre amis, menée sur toute l'année en équipe. Développement du front React Native et React et du back Quarkus, avec base de données graphe Neo4j et Firebase, conteneurisation et intégration continue GitLab. Résultat : une application fonctionnelle déployée en continu.",
+    tech:["React Native","TypeScript","Quarkus","Neo4j","Firebase","Docker","GitLab CI"],
+    links:[{label:"Voir le projet", url:"https://sidequest.bantou.me", type:"demo"}] },
+
+  { title:"PPEX 4", year:"Février 2026", cats:["Jeux"], image:"images/projects/ppex4.png",
+    desc:"Jeu vidéo réalisé en game jam. Conception et développement du jeu en C# sous Unity en quelques jours. Résultat : un jeu jouable, publié et téléchargeable sur itch.io.",
+    tech:["Unity","C#"],
+    links:[{label:"Télécharger sur itch.io", url:"https://bantou.itch.io/ppex4", type:"download"}] },
+
+  { title:"PING", year:"Juin 2025", cats:["Back-end"],
+    desc:"Back-end d'une plateforme collaborative de gestion de projets, en Java 21 avec Quarkus. Implémentation de l'authentification JWT, de la gestion des projets et des membres, d'une arborescence de fichiers, du versionnement Git via JGit, de l'exécution de commandes en conteneur et de la recherche plein-texte. Résultat : un back-end complet et sécurisé.",
+    tech:["Java 21","Quarkus","REST","JWT","JGit","Docker","Lucene"], links:[] },
+
+  { title:"Epi/place", year:"Mai 2025", cats:["Web","Back-end"],
+    desc:"Client HTTP communiquant avec un clone de r/place. Développement du client et de l'authentification OAuth2 et OIDC. Résultat : un client fonctionnel capable de dialoguer avec le service authentifié.",
+    tech:["Node.js","OAuth2","OIDC"], links:[] },
+
+  { title:"Tiger", year:"Mars-avril 2025", cats:["Systèmes"],
+    desc:"Compilateur complet du langage Tiger, écrit en C++ sur une base de code existante. Implémentation de toute la chaîne : analyse lexicale et syntaxique, AST, liaison des identifiants, vérification de types, représentation intermédiaire, sélection d'instructions, analyse de vivacité et allocation de registres. Résultat : un compilateur générant du code exécutable pour IA-32 et ARM.",
+    tech:["C++","Flex / Bison","LLVM","Boost Graph Library"], links:[] },
+
+  { title:"JWS", year:"Mars 2025", cats:["Back-end"],
+    desc:"Système de gestion d'inventaire et de commerce pour un jeu. Développement d'une architecture événementielle avec Kafka, d'endpoints REST et d'une architecture en couches. Résultat : un système d'échanges piloté par événements.",
+    tech:["Java","Quarkus","Hibernate","Kafka","REST"], links:[] },
+
+  { title:"42sh", year:"Janvier 2025", cats:["Systèmes"],
+    desc:"Shell POSIX à implémenter intégralement en C. Développement de toute la chaîne : analyse syntaxique, pipelines, redirections, variables et commandes intégrées. Résultat : un shell fonctionnel, du lexing à l'exécution des commandes.",
+    tech:["C","Shell POSIX","Analyse syntaxique","Git"], links:[] },
+
+  { title:"Malloc", year:"Novembre 2024", cats:["Systèmes"],
+    desc:"Réimplémentation d'un allocateur de mémoire en C. Gestion du tas via mmap et remplacement de malloc, free et realloc. Résultat : un allocateur fonctionnel se substituant à celui du système.",
+    tech:["C","Gestion mémoire","Git"], links:[] },
+
+  { title:"MyFind", year:"Novembre 2024", cats:["Systèmes"],
+    desc:"Réimplémentation en C de la commande Unix find. Développement du parcours récursif de l'arborescence et des expressions de filtrage. Résultat : un utilitaire reproduisant le comportement de find.",
+    tech:["C","Unix","Git"], links:[] },
+
+  { title:"Rénovation de site web", year:"Février 2024 - juin 2024", cats:["Design"],
+    desc:"Refonte du site d'une école (Kilkeary National School), pendant mon semestre à l'University of Limerick. Recueil des attentes du client puis itérations de design jusqu'à la maquette finale, dans une démarche centrée sur la relation client. Résultat : un nouveau design validé par le client.",
+    tech:["Figma","UX / UI","Design"], links:[] },
+
+  { title:"OCR Sudoku Solver", year:"Septembre 2023 - décembre 2023", cats:["IA","Systèmes"],
+    desc:"Solveur de Sudoku et Hexadoku à partir d'une image. Traitement de l'image, reconnaissance des chiffres par réseau de neurones, résolution, puis génération d'une image complétée. Résultat : une résolution complète depuis une simple photo.",
+    tech:["C","Traitement d'image","Réseau de neurones","SDL"], links:[] },
+
+  { title:"The Hidden World of Princess", year:"2022-2023", cats:["Jeux"], image:"images/projects/hidden-world.png",
+    desc:"Jeu Unity de type die and retry sur le thème des princesses Disney. Développement du jeu en C#, avec traversée de scènes remplies de pièges cachés et multijoueur en ligne via Photon. Résultat : un jeu multijoueur jouable en ligne.",
+    tech:["Unity","C#","Photon"],
+    links:[{label:"Télécharger", url:"files/hidden-world.zip", type:"download"}] },
+
+  { title:"Tower Of Time", year:"2021-2022", cats:["Jeux"], image:"images/projects/tower-of-time.png",
+    desc:"Jeu rogue-like réalisé sous Unity. Développement en C# d'un système d'objets améliorant le personnage pendant et entre les parties, avec multijoueur en ligne via Photon. Résultat : un rogue-like multijoueur jouable en ligne.",
+    tech:["Unity","C#","Photon"],
+    links:[{label:"Télécharger", url:"files/tower-of-time.zip", type:"download"}] }
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function buttons(links){
+  return (links||[]).map(l=>{
+    const cls = (l.type==="download") ? "primary" : "ghost";
+    return `<a class="lnk ${cls}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`;
+  }).join("");
+}
+
+function cardHTML(p){
+  return `<article class="card" data-cats="${esc((p.cats||[]).join(' '))}">
+    ${p.image ? `<img class="thumb" src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">` : ""}
+    <div class="pad">
+      <div class="year">${esc(p.year)}</div>
+      <h3>${esc(p.title)}</h3>
+      ${p.award ? `<div class="award">★ ${esc(p.award)}</div>` : ""}
+      <p class="desc">${esc(p.desc)}</p>
+      <div class="tech">${p.tech.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
+      ${(p.links&&p.links.length)?`<div class="cta">${buttons(p.links)}</div>`:""}
+    </div>
+  </article>`;
+}
+
+const grid = document.getElementById("grid");
+grid.innerHTML = PROJECTS.map(cardHTML).join("");
+document.getElementById("count").textContent = PROJECTS.length;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Filtres par catégorie */
+const CATS = ["Tous", ...Array.from(new Set(PROJECTS.flatMap(p=>p.cats||[])))];
+const filters = document.getElementById("filters");
+filters.innerHTML = CATS.map((c,i)=>
+  `<button class="filter" data-cat="${esc(c)}" aria-pressed="${i===0}">${esc(c)}</button>`
+).join("");
+filters.addEventListener("click", e=>{
+  const btn = e.target.closest(".filter");
+  if(!btn) return;
+  const cat = btn.dataset.cat;
+  filters.querySelectorAll(".filter").forEach(b=>b.setAttribute("aria-pressed", b===btn));
+  grid.querySelectorAll(".card").forEach(card=>{
+    const cats = card.dataset.cats.split(" ");
+    card.hidden = !(cat==="Tous" || cats.includes(cat));
+  });
+});
+</script>
+</body>
+</html>

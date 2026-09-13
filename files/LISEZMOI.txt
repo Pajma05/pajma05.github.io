@@ -1,0 +1,2 @@
+Dépose ici les fichiers téléchargeables (builds de jeux, PDF…).
+Les liens 'Télécharger' du portfolio pointent vers ce dossier, ex. files/hidden-world.zip
